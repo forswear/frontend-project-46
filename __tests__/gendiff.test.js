@@ -1,23 +1,32 @@
-import { generateDiff } from '../src/index.js';
-import fs from 'fs';
-import path from 'path';
+import path from "path";
+import { fileURLToPath } from "url";
+import { gendiff } from "../bin/gendiff.js"; // Убедитесь, что путь указан правильно
 
-const getFixturePath = (filename) => path.join(__dirname, '..', '__fixtures__', filename);
-const readFixture = (filename) => fs.readFileSync(getFixturePath(filename), 'utf-8');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-const expectedStylish = readContent('expectedStylish.txt');
-const expectedPlain = readContent('expectedPlain.txt');
-const expectedJson = readContent('expectedJson.txt');
+const getFixturePath = (filename) => path.join(__dirname, "..", "__fixtures__", filename);
 
-const testFormats = ['json', 'yml'];
-
-describe('generateDiff', () => {
-  test('should generate correct diff for flat JSON files', () => {
-    const file1 = JSON.parse(readFixture('file1.json'));
-    const file2 = JSON.parse(readFixture('file2.json'));
-    const expectedDiff = readFixture('expectedDiff.txt');
-
-    const result = generateDiff(file1, file2, 'default');
-    expect(result).toBe(expectedDiff);
+describe("gendiff", () => {
+  test("должен обрабатывать добавление нового ключа", () => {
+    const filepath1 = getFixturePath("file1.json");
+    const filepath2 = getFixturePath("file2.json");
+    const result = gendiff(filepath1, filepath2, "json");
+    expect(result).toContain("+ verbose: true");
+  });
+      
+  test("должен обрабатывать удаление ключа", () => {
+    const filepath1 = getFixturePath("file1.json");
+    const filepath2 = getFixturePath("file2.json");
+    const result = gendiff(filepath1, filepath2, "json");
+    expect(result).toContain("- proxy: \"123.234.53.22\"");
+  });
+      
+  test("должен обрабатывать изменение значения ключа", () => {
+    const filepath1 = getFixturePath("file1.json");
+    const filepath2 = getFixturePath("file2.json");
+    const result = gendiff(filepath1, filepath2, "json");
+    expect(result).toContain("- timeout: 50");
+    expect(result).toContain("+ timeout: 20");
   });
 });

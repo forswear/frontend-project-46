@@ -1,16 +1,16 @@
-import { Command } from 'commander';
-import parseFile from './parser.js';
-import _ from 'lodash';
+import { Command } from "commander";
+import parseFile from "./parser.js";
+import _ from "lodash";
 
 const program = new Command();
 
-program.version('0.1.0', '-v, --version', 'output the version number');
+program.version("0.1.0", "-v, --version", "output the version number");
 
-program.option('-f, --format [type]', 'output format');
+program.option("-f, --format [type]", "output format");
 
-program.description('Compares two configuration files and shows a difference.');
+program.description("Compares two configuration files and shows a difference.");
 
-program.arguments('<filepath1> <filepath2>');
+program.arguments("<filepath1> <filepath2>");
 
 program.action((filepath1, filepath2) => {
   try {
@@ -18,14 +18,14 @@ program.action((filepath1, filepath2) => {
     const data2 = parseFile(filepath2);
 
     console.log(`Comparing files: ${filepath1} and ${filepath2}`);
-    console.log('Differences:');
+    console.log("Differences:");
     console.log(generateDiff(data1, data2, program.format));
   } catch (error) {
     console.error(`Error: ${error.message}`);
   }
 });
 
-function generateDiff(data1, data2, format = 'default') {
+function generateDiff(data1, data2) {
   const differences = [];
 
   const allKeys = new Set([...Object.keys(data1), ...Object.keys(data2)]);
@@ -44,10 +44,20 @@ function generateDiff(data1, data2, format = 'default') {
     }
   });
 
-  return differences.join('\n');
+  return differences.join("\n");
 }
 
-program.parse(process.argv);
+// Экспорт функции gendiff
+export function gendiff(filepath1, filepath2, format) {
+  const data1 = parseFile(filepath1);
+  const data2 = parseFile(filepath2);
+  return generateDiff(data1, data2, format);
+}
+
+// Экспорт функции для запуска из командной строки
+export function runCLI() {
+  program.parse(process.argv);
+}
 
 if (program.opts().help) {
   program.outputHelp();
