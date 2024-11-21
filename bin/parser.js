@@ -1,6 +1,7 @@
+#!/usr/bin/env node
 import fs from "fs";
 import path from "path";
-import { safeLoad } from "js-yaml";
+import { load } from "js-yaml";
 
 function parseFile(filepath) {
   const ext = path.extname(filepath);
@@ -11,9 +12,9 @@ function parseFile(filepath) {
     return JSON.parse(data);
   case ".yml":
   case ".yaml":
-    return safeLoad(data);
+    return load(data);
   default:
-    throw new Error(`Unsupported format: ${ext}`);
+    throw new Error(`Неподдерживаемый формат: ${ext}`);
   }
 }
 

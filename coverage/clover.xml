@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1732096408430" clover="3.2.0">
-  <project timestamp="1732096408430" name="All files">
-    <metrics statements="84" coveredstatements="68" conditionals="12" coveredconditionals="8" methods="4" coveredmethods="3" elements="100" coveredelements="79" complexity="0" loc="84" ncloc="84" packages="1" files="2" classes="2"/>
+<coverage generated="1732177373316" clover="3.2.0">
+  <project timestamp="1732177373316" name="All files">
+    <metrics statements="86" coveredstatements="71" conditionals="13" coveredconditionals="11" methods="4" coveredmethods="3" elements="103" coveredelements="85" complexity="0" loc="86" ncloc="86" packages="1" files="2" classes="2"/>
     <file name="gendiff.js" path="D:\front\frontend-project-46\bin\gendiff.js">
-      <metrics statements="64" coveredstatements="50" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="2"/>
+      <metrics statements="66" coveredstatements="52" conditionals="8" coveredconditionals="7" methods="3" coveredmethods="2"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
@@ -31,64 +31,66 @@
       <line num="25" count="0" type="stmt"/>
       <line num="26" count="1" type="stmt"/>
       <line num="27" count="1" type="stmt"/>
-      <line num="28" count="3" type="cond" truecount="1" falsecount="0"/>
-      <line num="29" count="3" type="stmt"/>
-      <line num="30" count="3" type="stmt"/>
-      <line num="31" count="3" type="stmt"/>
-      <line num="32" count="3" type="stmt"/>
-      <line num="33" count="3" type="stmt"/>
-      <line num="34" count="3" type="cond" truecount="1" falsecount="0"/>
-      <line num="35" count="15" type="cond" truecount="1" falsecount="0"/>
-      <line num="36" count="12" type="cond" truecount="1" falsecount="0"/>
-      <line num="37" count="9" type="stmt"/>
-      <line num="38" count="9" type="stmt"/>
-      <line num="39" count="12" type="cond" truecount="1" falsecount="0"/>
-      <line num="40" count="6" type="stmt"/>
-      <line num="41" count="6" type="stmt"/>
-      <line num="42" count="15" type="cond" truecount="1" falsecount="0"/>
-      <line num="43" count="3" type="stmt"/>
-      <line num="44" count="3" type="stmt"/>
-      <line num="45" count="3" type="stmt"/>
-      <line num="46" count="3" type="stmt"/>
-      <line num="47" count="3" type="stmt"/>
-      <line num="48" count="3" type="stmt"/>
-      <line num="49" count="1" type="stmt"/>
-      <line num="50" count="1" type="stmt"/>
-      <line num="51" count="1" type="cond" truecount="1" falsecount="0"/>
-      <line num="52" count="3" type="stmt"/>
-      <line num="53" count="3" type="stmt"/>
-      <line num="54" count="3" type="stmt"/>
-      <line num="55" count="3" type="stmt"/>
-      <line num="56" count="1" type="stmt"/>
-      <line num="57" count="1" type="stmt"/>
+      <line num="28" count="6" type="cond" truecount="1" falsecount="0"/>
+      <line num="29" count="6" type="stmt"/>
+      <line num="30" count="6" type="stmt"/>
+      <line num="31" count="6" type="stmt"/>
+      <line num="32" count="6" type="stmt"/>
+      <line num="33" count="6" type="stmt"/>
+      <line num="34" count="6" type="cond" truecount="1" falsecount="0"/>
+      <line num="35" count="30" type="cond" truecount="1" falsecount="0"/>
+      <line num="36" count="24" type="cond" truecount="1" falsecount="0"/>
+      <line num="37" count="18" type="stmt"/>
+      <line num="38" count="18" type="stmt"/>
+      <line num="39" count="18" type="stmt"/>
+      <line num="40" count="18" type="stmt"/>
+      <line num="41" count="24" type="cond" truecount="1" falsecount="0"/>
+      <line num="42" count="12" type="stmt"/>
+      <line num="43" count="12" type="stmt"/>
+      <line num="44" count="30" type="cond" truecount="1" falsecount="0"/>
+      <line num="45" count="6" type="stmt"/>
+      <line num="46" count="6" type="stmt"/>
+      <line num="47" count="6" type="stmt"/>
+      <line num="48" count="6" type="stmt"/>
+      <line num="49" count="6" type="stmt"/>
+      <line num="50" count="6" type="stmt"/>
+      <line num="51" count="1" type="stmt"/>
+      <line num="52" count="1" type="stmt"/>
+      <line num="53" count="1" type="cond" truecount="1" falsecount="0"/>
+      <line num="54" count="6" type="stmt"/>
+      <line num="55" count="6" type="stmt"/>
+      <line num="56" count="6" type="stmt"/>
+      <line num="57" count="6" type="stmt"/>
       <line num="58" count="1" type="stmt"/>
-      <line num="59" count="0" type="stmt"/>
-      <line num="60" count="0" type="stmt"/>
-      <line num="61" count="1" type="stmt"/>
-      <line num="62" count="1" type="cond" truecount="0" falsecount="1"/>
-      <line num="63" count="0" type="stmt"/>
-      <line num="64" count="0" type="stmt"/>
+      <line num="59" count="1" type="stmt"/>
+      <line num="60" count="1" type="stmt"/>
+      <line num="61" count="0" type="stmt"/>
+      <line num="62" count="0" type="stmt"/>
+      <line num="63" count="1" type="stmt"/>
+      <line num="64" count="1" type="cond" truecount="0" falsecount="1"/>
+      <line num="65" count="0" type="stmt"/>
+      <line num="66" count="0" type="stmt"/>
     </file>
     <file name="parser.js" path="D:\front\frontend-project-46\bin\parser.js">
-      <metrics statements="20" coveredstatements="18" conditionals="4" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <metrics statements="20" coveredstatements="19" conditionals="5" coveredconditionals="4" methods="1" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
       <line num="2" count="1" type="stmt"/>
       <line num="3" count="1" type="stmt"/>
       <line num="4" count="1" type="stmt"/>
-      <line num="5" count="6" type="cond" truecount="1" falsecount="0"/>
-      <line num="6" count="6" type="stmt"/>
-      <line num="7" count="6" type="stmt"/>
-      <line num="8" count="6" type="stmt"/>
-      <line num="9" count="6" type="stmt"/>
-      <line num="10" count="6" type="stmt"/>
+      <line num="5" count="12" type="cond" truecount="1" falsecount="0"/>
+      <line num="6" count="12" type="stmt"/>
+      <line num="7" count="12" type="stmt"/>
+      <line num="8" count="12" type="stmt"/>
+      <line num="9" count="12" type="stmt"/>
+      <line num="10" count="12" type="cond" truecount="1" falsecount="0"/>
       <line num="11" count="6" type="stmt"/>
-      <line num="12" count="6" type="cond" truecount="0" falsecount="1"/>
-      <line num="13" count="6" type="cond" truecount="0" falsecount="1"/>
-      <line num="14" count="0" type="stmt"/>
-      <line num="15" count="6" type="cond" truecount="0" falsecount="1"/>
+      <line num="12" count="12" type="cond" truecount="1" falsecount="0"/>
+      <line num="13" count="12" type="cond" truecount="1" falsecount="0"/>
+      <line num="14" count="6" type="stmt"/>
+      <line num="15" count="12" type="cond" truecount="0" falsecount="1"/>
       <line num="16" count="0" type="stmt"/>
-      <line num="17" count="6" type="stmt"/>
-      <line num="18" count="6" type="stmt"/>
+      <line num="17" count="12" type="stmt"/>
+      <line num="18" count="12" type="stmt"/>
       <line num="19" count="1" type="stmt"/>
       <line num="20" count="1" type="stmt"/>
     </file>

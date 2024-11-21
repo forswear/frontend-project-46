@@ -25,6 +25,7 @@ program.action((filepath1, filepath2) => {
   }
 });
 
+
 function generateDiff(data1, data2) {
   const differences = [];
 
@@ -47,6 +48,7 @@ function generateDiff(data1, data2) {
   return differences.join("\n");
 }
 
+
 // Экспорт функции gendiff
 export function gendiff(filepath1, filepath2, format) {
   const data1 = parseFile(filepath1);
@@ -56,6 +58,10 @@ export function gendiff(filepath1, filepath2, format) {
 
 // Экспорт функции для запуска из командной строки
 export function runCLI() {
+  if (process.argv.length < 4) {
+    console.error("Error: missing required arguments 'filepath1' and 'filepath2'");
+    process.exit(1);
+  }
   program.parse(process.argv);
 }
 
