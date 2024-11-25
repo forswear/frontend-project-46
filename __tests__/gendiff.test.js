@@ -1,55 +1,17 @@
-
+import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
-import { gendiff } from "../bin/gendiff.js"; // Убедитесь, что путь указан правильно
+import genDiff from "../src/index.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const fileExt = [".json", ".yaml"];
 
-const getFixturePath = (filename) => path.join(__dirname, "..", "__fixtures__", filename);
+const resultStylish = fs.readFileSync(
+  path.resolve(process.cwd(), "__fixtures__/result_stylish.txt"),
+  "utf-8",
+);
 
-describe("gendiff", () => {
-  test("должен обрабатывать добавление нового ключа", () => {
-    const filepath1 = getFixturePath("file1.json");
-    const filepath2 = getFixturePath("file2.json");
-    const result = gendiff(filepath1, filepath2, "json");
-    expect(result).toContain("+ verbose: true");
-  });
-
-  test("должен обрабатывать удаление ключа", () => {
-    const filepath1 = getFixturePath("file1.json");
-    const filepath2 = getFixturePath("file2.json");
-    const result = gendiff(filepath1, filepath2, "json");
-    expect(result).toContain("- proxy: \"123.234.53.22\"");
-  });
-
-  test("должен обрабатывать изменение значения ключа", () => {
-    const filepath1 = getFixturePath("file1.json");
-    const filepath2 = getFixturePath("file2.json");
-    const result = gendiff(filepath1, filepath2, "json");
-    expect(result).toContain("- timeout: 50");
-    expect(result).toContain("+ timeout: 20");
-  });
-
-  test("должен обрабатывать добавление нового ключа (YAML)", () => {
-    const filepath1 = getFixturePath("file1.yml");
-    const filepath2 = getFixturePath("file2.yml");
-    const result = gendiff(filepath1, filepath2, "json");
-    expect(result).toContain("+ verbose: true");
-  });
-
-  test("должен обрабатывать удаление ключа (YAML)", () => {
-    const filepath1 = getFixturePath("file1.yml");
-    const filepath2 = getFixturePath("file2.yml");
-    const result = gendiff(filepath1, filepath2, "json");
-    expect(result).toContain("- proxy: \"123.234.53.22\"");
-  });
-
-  test("должен обрабатывать изменение значения ключа (YAML)", () => {
-    const filepath1 = getFixturePath("file1.yml");
-    const filepath2 = getFixturePath("file2.yml");
-    const result = gendiff(filepath1, filepath2, "json");
-    expect(result).toContain("- timeout: 50");
-    expect(result).toContain("+ timeout: 20");
-  });
+test.each(fileExt)("testing different file options", (extension) => {
+  const fileBefore = `__fixtures__/file1${extension}`;
+  const fileAfter = `__fixtures__/file2${extension}`;
+  const actual1 = genDiff(fileBefore, fileAfter, "stylish");
+  expect(actual1).toEqual(resultStylish);
 });
