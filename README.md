@@ -1,6 +1,15 @@
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/forswear/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/forswear/frontend-project-46/actions)
 
+### Test Coverage Badge
+<a href="https://codeclimate.com/github/forswear/frontend-project-46/test_coverage"><img src="https://api.codeclimate.com/v1/badges/1c747c239db83092a764/test_coverage" /></a>
+
+### Maintainability
+<a href="https://codeclimate.com/github/forswear/frontend-project-46/maintainability"><img src="https://api.codeclimate.com/v1/badges/1c747c239db83092a764/maintainability" /></a>
+
+
+
+
 # Краткое описание проекта:
 Вычислитель отличий – программа, определяющая разницу между двумя структурами данных.
 
