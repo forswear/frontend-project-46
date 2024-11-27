@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import _ from 'lodash';
 
 const symbols = {
@@ -7,12 +8,12 @@ const symbols = {
   nested: ' ',
 };
 
-const identSize = 4;
-const identOffse = 2;
+const indentSize = 4;
+const identOutsize = 2;
 
 const makeIndent = (depth) => {
   const str = ' ';
-  return str.repeat(depth * identSize - identOffse);
+  return str.repeat(depth * indentSize - identOutsize);
 };
 
 const stringify = (value, depth = 1) => {
@@ -30,36 +31,30 @@ const stringify = (value, depth = 1) => {
 };
 
 const getStylishFormat = (value, depth = 1) => {
+  const indent = makeIndent(depth);
+  const nextIndent = makeIndent(depth + 1);
+
   switch (value.type) {
     case 'added':
     case 'deleted':
-    case 'unchanged': {
-      const indent = makeIndent(depth);
+    case 'unchanged':
+      const symbol = symbols[value.type];
       const { key } = value;
-      const formattedValue = stringify(value.value, depth);
-      return `${indent}${symbols[value.type]} ${key}: ${formattedValue}`;
-    }
+      const strValue = stringify(value.value, depth);
+      return `${indent}${symbol} ${key}: ${strValue}`;
 
-    case 'changed': {
-      const indent = makeIndent(depth);
-      const { key } = value;
-      const oldValue = stringify(value.valueBefore, depth);
-      const newValue = stringify(value.valueAfter, depth);
+    case 'changed':
+      const deletedSymbol = symbols.deleted;
+      const addedSymbol = symbols.added;
+      const keyChanged = value.key;
+      const strValueBefore = stringify(value.valueBefore, depth);
+      const strValueAfter = stringify(value.valueAfter, depth);
+      return `${indent}${deletedSymbol} ${keyChanged}: ${strValueBefore}\n${indent}${addedSymbol} ${keyChanged}: ${strValueAfter}`;
 
-      return (
-        `${indent}${symbols.deleted} ${key}: ${oldValue}\n`
-        + `${indent}${symbols.added} ${key}: ${newValue}`
-      );
-    }
-
-    case 'nested': {
-      const indent = makeIndent(depth);
-      const children = value.children
-        .map((child) => getStylishFormat(child, depth + 1))
-        .join('\n');
-
-      return `${indent}  ${value.key}: {\n${children}\n${indent}} }`;
-    }
+    case 'nested':
+      const nestedKey = value.key;
+      const children = value.children.map((val) => getStylishFormat(val, depth + 1)).join('\n');
+      return `${indent}  ${nestedKey}: {\n${children}\n${nextIndent} }`;
 
     default:
       throw new Error(`Unknown type: ${value.type}`);
