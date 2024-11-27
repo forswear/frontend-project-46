@@ -1,4 +1,3 @@
-/* eslint-disable no-case-declarations */
 import _ from 'lodash';
 
 const symbols = {
@@ -37,25 +36,25 @@ const getStylishFormat = (value, depth = 1) => {
   switch (value.type) {
     case 'added':
     case 'deleted':
-    case 'unchanged':
+    case 'unchanged': {
       const symbol = symbols[value.type];
       const { key } = value;
       const strValue = stringify(value.value, depth);
       return `${indent}${symbol} ${key}: ${strValue}`;
-
-    case 'changed':
+    }
+    case 'changed': {
       const deletedSymbol = symbols.deleted;
       const addedSymbol = symbols.added;
       const keyChanged = value.key;
       const strValueBefore = stringify(value.valueBefore, depth);
       const strValueAfter = stringify(value.valueAfter, depth);
       return `${indent}${deletedSymbol} ${keyChanged}: ${strValueBefore}\n${indent}${addedSymbol} ${keyChanged}: ${strValueAfter}`;
-
-    case 'nested':
+    }
+    case 'nested': {
       const nestedKey = value.key;
       const children = value.children.map((val) => getStylishFormat(val, depth + 1)).join('\n');
       return `${indent}  ${nestedKey}: {\n${children}\n${nextIndent} }`;
-
+    }
     default:
       throw new Error(`Unknown type: ${value.type}`);
   }

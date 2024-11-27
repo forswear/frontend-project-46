@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.76% </span>
+                <span class="strong">96.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/17</span>
+                <span class='fraction'>27/28</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">94.11% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>16/17</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">96.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/14</span>
+                <span class='fraction'>27/28</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -90,68 +90,71 @@
 <a name='L25'></a><a href='#L25'>25</a>
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
-<a name='L28'></a><a href='#L28'>28</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">26x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">10x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">36x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import _ from "lodash";
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">36x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import _ from 'lodash';
 &nbsp;
-const stringify = <span class="fstat-no" title="function not covered" >(v</span>alue) =&gt; {
-<span class="cstat-no" title="statement not covered" >  if (_.isObject(value)) {</span>
-<span class="cstat-no" title="statement not covered" >    return "[complex value]";</span>
+const stringify = (value) =&gt; {
+  if (_.isObject(value)) {
+    return '[complex value]';
   }
-<span class="cstat-no" title="statement not covered" >  return typeof value === "string" ? `'${value}'` : value;</span>
+  return typeof value === 'string' ? `'${value}'` : String(value);
 };
 &nbsp;
-const getPlainFormat = <span class="fstat-no" title="function not covered" >(v</span>alue, parent = <span class="branch-0 cbranch-no" title="branch not covered" >"")</span> =&gt; {
-<span class="cstat-no" title="statement not covered" >  switch (value.type) {</span>
-  case "added":
-<span class="cstat-no" title="statement not covered" >    return `Property '${parent}${value.key}' was added with value: ${stringify(value.value)}`;</span>
-  case "deleted":
-<span class="cstat-no" title="statement not covered" >    return `Property '${parent}${value.key}' was removed`;</span>
-  case "unchanged":
-<span class="cstat-no" title="statement not covered" >    return null;</span>
-  case "changed":
-<span class="cstat-no" title="statement not covered" >    return `Property '${parent}${value.key}' was updated. From ${stringify(value.valueBefore)} to ${stringify(value.valueAfter)}`;</span>
-  case "nested":
-<span class="cstat-no" title="statement not covered" >    return value.children.map(<span class="fstat-no" title="function not covered" >(v</span>al) =&gt; <span class="cstat-no" title="statement not covered" >getPlainFormat(val, `${parent + value.key}.`))</span></span>
-      .filter(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; <span class="cstat-no" title="statement not covered" >item !== null)</span>.join("\n");
-  default:
-<span class="cstat-no" title="statement not covered" >    throw new Error(`Unknown type: ${value.type}`);</span>
+const getPlainFormat = (value, parent = '') =&gt; {
+  switch (value.type) {
+    case 'added':
+      return `Property '${parent}${value.key}' was added with value: ${stringify(value.value)}`;
+    case 'deleted':
+      return `Property '${parent}${value.key}' was removed`;
+    case 'unchanged':
+      return null;
+    case 'changed':
+      return `Property '${parent}${value.key}' was updated. From ${stringify(value.valueBefore)} to ${stringify(value.valueAfter)}`;
+    case 'nested':
+      return value.children.map((val) =&gt; getPlainFormat(val, `${parent}${value.key}.`))
+        .filter((item) =&gt; item !== null).join('\n');
+<span class="branch-0 cbranch-no" title="branch not covered" >    default:</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error(`Unknown type: ${value.type}`);</span>
   }
 };
 &nbsp;
-export default <span class="fstat-no" title="function not covered" >(p</span>lain) =&gt; <span class="cstat-no" title="statement not covered" >`${plain.map(<span class="fstat-no" title="function not covered" >(e</span>lement) =&gt; <span class="cstat-no" title="statement not covered" >getPlainFormat(element))</span>.filter(<span class="fstat-no" title="function not covered" >(i</span>tem) =&gt; <span class="cstat-no" title="statement not covered" >item !== null)</span>.join("\n")}`;</span></pre></td></tr></table></pre>
+export default (plain) =&gt; `${plain.map((element) =&gt; getPlainFormat(element)).filter((item) =&gt; item !== null).join('\n')}`;
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-11-26T06:24:55.477Z
+                at 2024-11-27T08:49:37.029Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
