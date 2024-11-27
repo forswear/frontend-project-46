@@ -1,15 +1,18 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 const symbols = {
-  added: "+",
-  deleted: "-",
-  unchanged: " ",
-  nested: " ",
+  added: '+',
+  deleted: '-',
+  unchanged: ' ',
+  nested: ' ',
 };
 
+const identSize = 4;
+const identOffse = 2;
+
 const makeIndent = (depth) => {
-  const str = " ";
-  return str.repeat(depth * 4 - 2);
+  const str = ' ';
+  return str.repeat(depth * identSize - identOffse);
 };
 
 const stringify = (value, depth = 1) => {
@@ -23,30 +26,44 @@ const stringify = (value, depth = 1) => {
       depth + 1,
     )}`,
   );
-  return `{\n${getKeys.join("\n")}\n  ${makeIndent(depth)}}`;
+  return `{\n${getKeys.join('\n')}\n  ${makeIndent(depth)}}`;
 };
 
 const getStylishFormat = (value, depth = 1) => {
   switch (value.type) {
-  case "added":
-  case "deleted":
-  case "unchanged":
-    return `${makeIndent(depth)}${symbols[value.type]} ${
-      value.key
-    }: ${stringify(value.value, depth)}`;
-  case "changed":
-    return `${makeIndent(depth)}${symbols.deleted} ${
-      value.key
-    }: ${stringify(value.valueBefore, depth)}\n${makeIndent(depth)}${
-      symbols.added
-    } ${value.key}: ${stringify(value.valueAfter, depth)}`;
-  case "nested":
-    return `${makeIndent(depth)}  ${value.key}: {\n${value.children
-      .map((val) => getStylishFormat(val, depth + 1))
-      .join("\n")}\n ${makeIndent(depth)} }`;
-  default:
-    throw new Error(`Unknown type: ${value.type}`);
+    case 'added':
+    case 'deleted':
+    case 'unchanged': {
+      const indent = makeIndent(depth);
+      const { key } = value;
+      const formattedValue = stringify(value.value, depth);
+      return `${indent}${symbols[value.type]} ${key}: ${formattedValue}`;
+    }
+
+    case 'changed': {
+      const indent = makeIndent(depth);
+      const { key } = value;
+      const oldValue = stringify(value.valueBefore, depth);
+      const newValue = stringify(value.valueAfter, depth);
+
+      return (
+        `${indent}${symbols.deleted} ${key}: ${oldValue}\n`
+        + `${indent}${symbols.added} ${key}: ${newValue}`
+      );
+    }
+
+    case 'nested': {
+      const indent = makeIndent(depth);
+      const children = value.children
+        .map((child) => getStylishFormat(child, depth + 1))
+        .join('\n');
+
+      return `${indent}  ${value.key}: {\n${children}\n${indent}} }`;
+    }
+
+    default:
+      throw new Error(`Unknown type: ${value.type}`);
   }
 };
 
-export default (diff) => `{\n${diff.map((value) => getStylishFormat(value, 1)).join("\n")}\n}`;
+export default (diff) => `{\n${diff.map((value) => getStylishFormat(value, 1)).join('\n')}\n}`;
